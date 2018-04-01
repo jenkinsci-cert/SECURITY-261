@@ -42,11 +42,11 @@ int totalNumberOfBuilds = 0
 int totalNumberOfCorrectedBuilds = 0
 int totalNumberOfFailedBuilds = 0
 
-Jenkins.instance.getAllItems(AbstractProject).each { AbstractProject project ->
+Jenkins.instance.getAllItems(Job).each { Job project ->
   println "Project=[${project.name}] of type=[${project.class.simpleName}]"
   
   boolean affected = false
-  AbstractBuild build = project.getLastBuild()
+  Run build = project.getLastBuild()
   while(build != null){
     print "\t#${build.number} of type [${build.class.simpleName}] " 
     
